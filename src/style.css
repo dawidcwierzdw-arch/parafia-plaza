@@ -1,0 +1,1106 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  background: #f5f5f2;
+  color: #172033;
+}
+
+body {
+  min-height: 100vh;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* =========================
+   LOGOWANIE
+========================= */
+
+.login-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f2;
+  padding: 24px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+}
+
+.login-cross {
+  font-size: 24px;
+  color: #17365d;
+  margin-bottom: 10px;
+}
+
+.login-card h1 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.15;
+  font-weight: 750;
+  letter-spacing: -0.8px;
+  color: #17365d;
+}
+
+.login-subtitle {
+  margin: 10px 0 22px;
+  font-size: 14px;
+  color: #536070;
+}
+
+.pin-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.pin-dots span {
+  width: 11px;
+  height: 11px;
+  border: 1.5px solid #b9bec5;
+  border-radius: 50%;
+  background: transparent;
+  transition: 0.15s ease;
+}
+
+.pin-dots span.active {
+  background: #17365d;
+  border-color: #17365d;
+}
+
+.pin-keypad {
+  width: 220px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 58px);
+  justify-content: center;
+  gap: 10px;
+}
+
+.pin-button {
+  width: 58px;
+  height: 48px;
+  border: 1px solid #d9dce0;
+  border-radius: 11px;
+  background: white;
+  color: #172033;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  transition:
+    background 0.15s ease,
+    transform 0.1s ease,
+    border-color 0.15s ease;
+}
+
+.pin-button:hover {
+  background: #f0f2f4;
+  border-color: #c8ccd1;
+}
+
+.pin-button:active {
+  transform: scale(0.95);
+}
+
+.pin-clear {
+  color: #777;
+  font-size: 22px;
+}
+
+.login-hint {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #596273;
+}
+
+/* =========================
+   APLIKACJA
+========================= */
+
+.app-shell {
+  min-height: 100vh;
+  background: #f5f5f2;
+  padding-bottom: 82px;
+}
+
+.topbar {
+  height: 72px;
+  background: white;
+  border-bottom: 1px solid #e7e7e3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 18px;
+  color: #17365d;
+  font-weight: 750;
+}
+
+.topbar p {
+  margin: 4px 0 0;
+  color: #747b85;
+  font-size: 12px;
+}
+
+.logout-button {
+  border: 1px solid #dedfdb;
+  background: white;
+  color: #555;
+  border-radius: 9px;
+  padding: 8px 13px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background: #f2f2ef;
+}
+
+/* =========================
+   GŁÓWNA CZĘŚĆ
+========================= */
+
+.main-content {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 28px 30px;
+}
+
+.page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.page-heading h2 {
+  margin: 0;
+  font-size: 26px;
+  color: #172033;
+  letter-spacing: -0.4px;
+}
+
+.week-navigation {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.week-arrow,
+.today-button {
+  border: 1px solid #e1e2de;
+  background: white;
+  color: #555;
+  cursor: pointer;
+}
+
+.week-arrow {
+  width: 34px;
+  height: 32px;
+  border-radius: 9px;
+  font-size: 17px;
+}
+
+.today-button {
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.week-arrow:hover,
+.today-button:hover {
+  background: #f0f0ed;
+}
+
+/* =========================
+   PRZEŁĄCZNIK
+========================= */
+
+.view-switch {
+  display: flex;
+  background: #e9e9e5;
+  border-radius: 10px;
+  padding: 3px;
+}
+
+.view-switch button {
+  border: 0;
+  background: transparent;
+  padding: 8px 15px;
+  border-radius: 8px;
+  color: #777;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.view-switch button.active {
+  background: white;
+  color: #17365d;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================
+   ZAKRES TYGODNIA
+========================= */
+
+.week-title {
+  margin-bottom: 14px;
+  color: #747b85;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* =========================
+   KALENDARZ TYGODNIOWY
+========================= */
+
+.week-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.day-card {
+  min-width: 0;
+  background: white;
+  border: 1px solid #e4e5e1;
+  border-radius: 14px;
+  padding: 15px;
+  min-height: 270px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.025);
+}
+
+.day-card.today {
+  border-color: #b6c6d8;
+  box-shadow: 0 0 0 2px rgba(23, 54, 93, 0.06);
+}
+
+.day-header {
+  min-height: 58px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid #eeeeeb;
+  padding-bottom: 11px;
+  margin-bottom: 12px;
+}
+
+.day-name {
+  font-size: 14px;
+  font-weight: 750;
+  text-transform: capitalize;
+  color: #172033;
+}
+
+.day-date {
+  margin-top: 4px;
+  font-size: 11px;
+  color: #8a9098;
+}
+
+.today-badge {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #17365d;
+  background: #e8eef5;
+  padding: 4px 6px;
+  border-radius: 5px;
+}
+
+/* =========================
+   MSZE
+========================= */
+
+.mass-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mass-row {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) 28px;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 7px;
+  border-radius: 9px;
+  background: #f8f8f6;
+}
+
+.mass-time {
+  font-size: 13px;
+  font-weight: 750;
+  color: #172033;
+}
+
+.mass-info {
+  min-width: 0;
+}
+
+.mass-name {
+  font-size: 11px;
+  color: #69717c;
+  margin-bottom: 3px;
+}
+
+.mass-priest {
+  display: inline-block;
+  max-width: 100%;
+  font-size: 10px;
+  font-weight: 650;
+  padding: 3px 6px;
+  border-radius: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.priest-proboszcz {
+  background: #f4ead2;
+  color: #80631f;
+}
+
+.priest-wikariusz {
+  background: #dce9f5;
+  color: #315d80;
+}
+
+.priest-empty {
+  background: #ececea;
+  color: #888;
+}
+
+.edit-mass {
+  width: 28px;
+  height: 28px;
+  border: 0;
+  background: transparent;
+  color: #8a8f96;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.edit-mass:hover {
+  background: #e9e9e6;
+  color: #17365d;
+}
+
+/* =========================
+   NABOŻEŃSTWO
+========================= */
+
+.add-devotion {
+  width: 100%;
+  margin-top: 13px;
+  padding: 8px 7px;
+  border: 1px dashed #d6d7d3;
+  border-radius: 8px;
+  background: transparent;
+  color: #81868d;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.add-devotion:hover {
+  background: #f5f5f2;
+  color: #17365d;
+  border-color: #bfc4c8;
+}
+
+/* =========================
+   MIESIĄC
+========================= */
+
+.month-placeholder {
+  min-height: 400px;
+  background: white;
+  border: 1px solid #e4e5e1;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.month-icon {
+  font-size: 40px;
+  color: #c0c4c8;
+  margin-bottom: 12px;
+}
+
+.month-placeholder h3 {
+  margin: 0;
+  color: #172033;
+}
+
+.month-placeholder p {
+  margin: 7px 0 0;
+  color: #858b93;
+  font-size: 13px;
+}
+
+/* =========================
+   DOLNA NAWIGACJA
+========================= */
+
+.bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 68px;
+  background: rgba(255, 255, 255, 0.97);
+  border-top: 1px solid #e4e5e1;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  z-index: 50;
+}
+
+.nav-item {
+  width: 105px;
+  border: 0;
+  background: transparent;
+  color: #858a91;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+
+.nav-item span {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.nav-item small {
+  font-size: 10px;
+}
+
+.nav-item.active {
+  color: #17365d;
+  font-weight: 700;
+}
+
+.nav-item:hover {
+  color: #17365d;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1100px) {
+  .week-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* =========================
+   TELEFON
+========================= */
+
+@media (max-width: 700px) {
+  .topbar {
+    height: 64px;
+    padding: 0 17px;
+  }
+
+  .topbar h1 {
+    font-size: 16px;
+  }
+
+  .main-content {
+    padding: 20px 14px 20px;
+  }
+
+  .page-heading {
+    display: block;
+  }
+
+  .page-heading h2 {
+    font-size: 22px;
+  }
+
+  .view-switch {
+    margin-top: 15px;
+    width: fit-content;
+  }
+
+  .week-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .day-card {
+    min-height: auto;
+  }
+
+  .day-header {
+    min-height: auto;
+  }
+
+  .bottom-nav {
+    height: 64px;
+    gap: 0;
+  }
+
+  .nav-item {
+    width: 25%;
+  }
+}
+
+/* =========================
+   MAŁY TELEFON
+========================= */
+
+@media (max-width: 400px) {
+  .login-card h1 {
+    font-size: 27px;
+  }
+
+  .pin-keypad {
+    grid-template-columns: repeat(3, 54px);
+  }
+
+  .pin-button {
+    width: 54px;
+    height: 46px;
+  }
+}
+/* =========================
+   MODAL EDYCJI MSZY
+========================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 27, 40, 0.38);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 100;
+}
+
+.mass-modal {
+  width: 100%;
+  max-width: 390px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  animation: modalIn 0.16s ease-out;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid #eeeeeb;
+}
+
+.modal-title {
+  font-size: 17px;
+  font-weight: 750;
+  color: #172033;
+}
+
+.modal-subtitle {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #7b8189;
+  text-transform: capitalize;
+}
+
+.modal-close {
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #777;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  background: #f1f1ee;
+}
+
+.priest-options {
+  padding: 12px 20px;
+}
+
+.priest-option {
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 10px 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.priest-option:hover {
+  background: #f5f5f2;
+}
+
+.priest-option input {
+  width: 17px;
+  height: 17px;
+  accent-color: #17365d;
+}
+
+.option-color {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.proboszcz-color {
+  background: #b48a2c;
+}
+
+.wikariusz-color {
+  background: #477da5;
+}
+
+.empty-color {
+  background: #a4a4a0;
+}
+
+.priest-option strong {
+  font-size: 13px;
+  font-weight: 650;
+  color: #293142;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 15px 20px 20px;
+  border-top: 1px solid #eeeeeb;
+}
+
+.modal-cancel,
+.modal-save {
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.modal-cancel {
+  border: 1px solid #dedfdc;
+  background: white;
+  color: #666;
+}
+
+.modal-cancel:hover {
+  background: #f4f4f1;
+}
+
+.modal-save {
+  border: 1px solid #17365d;
+  background: #17365d;
+  color: white;
+}
+
+.modal-save:hover {
+  background: #214a7b;
+}
+
+@media (max-width: 500px) {
+  .modal-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .mass-modal {
+    max-width: none;
+    border-radius: 18px 18px 0 0;
+  }
+}
+
+/* =========================
+   WIDOK MIESIĄCA
+   ========================= */
+
+.month-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.month-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.month-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.month-weekday {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #777;
+  padding: 6px 0;
+}
+
+.month-day {
+  min-height: 82px;
+  background: #fff;
+  border: 1px solid #e7e7e7;
+  border-radius: 12px;
+  padding: 8px;
+  cursor: pointer;
+  transition: .15s ease;
+}
+
+.month-day:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,.06);
+}
+
+.month-day.empty {
+  background: transparent;
+  border: none;
+  cursor: default;
+}
+
+.month-day.today {
+  border: 2px solid #111;
+}
+
+.month-day-number {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.month-events {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 12px;
+}
+
+.month-event-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.month-event-dot.proboszcz {
+  background: #2563eb;
+}
+
+.month-event-dot.dawid {
+  background: #16a34a;
+}
+
+.month-event-dot.unassigned {
+  background: #aaa;
+}
+
+.month-day.has-events {
+  background: #fafafa;
+}
+
+@media (max-width: 600px) {
+
+  .month-grid {
+    gap: 3px;
+  }
+
+  .month-day {
+    min-height: 62px;
+    padding: 5px;
+    border-radius: 9px;
+  }
+
+  .month-day-number {
+    font-size: 12px;
+  }
+
+  .month-event-dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  .month-weekday {
+    font-size: 10px;
+  }
+}
+
+/* =========================
+   MÓJ GRAFIK
+   ========================= */
+
+.my-schedule-header {
+  margin-bottom: 20px;
+}
+
+.my-schedule-header .eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: #777;
+  margin-bottom: 4px;
+}
+
+.my-schedule-header h2 {
+  margin: 0;
+  font-size: 25px;
+}
+
+.my-schedule-header p {
+  margin: 5px 0 0;
+  color: #777;
+  font-size: 14px;
+}
+
+.my-schedule-day {
+  margin-bottom: 18px;
+}
+
+.my-schedule-date {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.my-schedule-date strong {
+  font-size: 16px;
+}
+
+.my-schedule-date span {
+  color: #777;
+  font-size: 13px;
+}
+
+.my-schedule-event {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #fff;
+  border: 1px solid #e7e7e7;
+  border-radius: 12px;
+  padding: 13px 15px;
+  margin-bottom: 7px;
+}
+
+.my-schedule-time {
+  min-width: 50px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.my-schedule-event-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.my-schedule-event-info strong {
+  font-size: 14px;
+}
+
+.my-schedule-event-info span {
+  font-size: 12px;
+  color: #777;
+}
+
+.empty-state {
+  text-align: center;
+  background: #fff;
+  border: 1px solid #e7e7e7;
+  border-radius: 16px;
+  padding: 35px 20px;
+}
+
+.empty-state-icon {
+  width: 42px;
+  height: 42px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f1f1;
+  font-size: 20px;
+}
+
+.empty-state h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.empty-state p {
+  margin: 0;
+  color: #777;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+
+  .my-schedule-event {
+    padding: 12px;
+  }
+
+  .my-schedule-time {
+    min-width: 45px;
+    font-size: 16px;
+  }
+}
+
+/* =========================
+   POWIADOMIENIE O ZMIANIE GRAFIKU
+   ========================= */
+
+.app-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 99999;
+
+  width: min(380px, calc(100vw - 40px));
+
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  padding: 16px 18px;
+
+  background: rgba(255, 255, 255, 0.97);
+  color: #111827;
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.16);
+
+  animation: notificationIn 0.3s ease-out;
+}
+
+.app-notification-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.app-notification-content strong {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.app-notification-content span {
+  color: #4b5563;
+}
+
+.app-notification-close {
+  border: none;
+  background: transparent;
+
+  color: #9ca3af;
+  font-size: 22px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  padding: 0;
+}
+
+.app-notification-close:hover {
+  color: #111827;
+}
+
+@keyframes notificationIn {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 600px) {
+
+  .app-notification {
+    top: 12px;
+    right: 12px;
+    width: calc(100vw - 24px);
+  }
+
+}
