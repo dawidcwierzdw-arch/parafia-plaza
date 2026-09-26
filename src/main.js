@@ -392,7 +392,7 @@ function renderLogin() {
       })
     })
 
-  document
+    document
     .querySelector('#clearPin')
     .addEventListener('click', () => {
 
@@ -400,6 +400,47 @@ function renderLogin() {
 
       updateLoginDots()
     })
+
+  document.addEventListener(
+    'keydown',
+    handleKeyboardPin
+  )
+}
+
+function handleKeyboardPin(event) {
+
+  // działa tylko na ekranie logowania
+  if (!document.querySelector('.login-screen')) {
+    return
+  }
+
+  // cyfry 0–9
+  if (/^[0-9]$/.test(event.key)) {
+
+    if (enteredPin.length >= 4) {
+      return
+    }
+
+    enteredPin += event.key
+
+    updateLoginDots()
+
+    if (enteredPin.length === 4) {
+      setTimeout(() => {
+        checkPin(enteredPin)
+      }, 150)
+    }
+
+    return
+  }
+
+  // Backspace – usuwa ostatnią cyfrę
+  if (event.key === 'Backspace') {
+
+    enteredPin = enteredPin.slice(0, -1)
+
+    updateLoginDots()
+  }
 }
 
 function updateLoginDots() {
@@ -941,15 +982,17 @@ function renderApp() {
 
       <header class="topbar">
 
-        <div>
-          <h1>
-            Parafia Płaza
-          </h1>
+       <div class="topbar-brand">
+  <img
+    src="/pwa-512.png"
+    alt="Parafia Płaza"
+    class="topbar-logo"
+  >
 
-          <p>
-            ${currentUser}
-          </p>
-        </div>
+  <div class="topbar-user">
+    ${currentUser}
+  </div>
+</div>
 
         <button
           class="logout-button"
@@ -1387,7 +1430,19 @@ document
           return
         }
 
-        try {
+const confirmed = window.confirm(
+  `Czy na pewno chcesz usunąć?\n\n${devotion.title}`
+)
+
+if (!confirmed) {
+  return
+}
+
+button.disabled = true
+button.style.opacity = '0.5'
+button.style.pointerEvents = 'none'
+
+try {
 
           const {
             data: deletedEvent,
@@ -2863,7 +2918,7 @@ function renderMySchedule() {
   })
 
   // -------------------------
-  // HTML
+  // NAGŁÓWEK
   // -------------------------
 
   let html = `
@@ -2879,12 +2934,16 @@ function renderMySchedule() {
       </h2>
 
       <p>
-        Grafik na bieżący tydzień
+        Twoje wydarzenia na bieżący tydzień
       </p>
 
     </div>
 
   `
+
+  // -------------------------
+  // BRAK WYDARZEŃ
+  // -------------------------
 
   if (events.length === 0) {
 
@@ -2897,11 +2956,11 @@ function renderMySchedule() {
         </div>
 
         <h3>
-          Brak przydzielonych wydarzeń
+          Spokojny tydzień
         </h3>
 
         <p>
-          W tym tygodniu nie masz
+          Nie masz w tym tygodniu
           przypisanych Mszy ani nabożeństw.
         </p>
 
@@ -2948,25 +3007,47 @@ function renderMySchedule() {
             }
           )
 
+        const today =
+          isToday(date)
+
         html += `
 
-          <div class="my-schedule-day">
+          <div
+            class="
+              my-schedule-day
+              ${today ? 'today' : ''}
+            "
+          >
 
             <div class="my-schedule-date">
 
-              <strong>
-                ${
-                  dayName
-                    .charAt(0)
-                    .toUpperCase()
-                  +
-                  dayName.slice(1)
-                }
-              </strong>
+              <div>
 
-              <span>
-                ${formattedDate}
-              </span>
+                <strong>
+                  ${
+                    dayName
+                      .charAt(0)
+                      .toUpperCase()
+                    +
+                    dayName.slice(1)
+                  }
+                </strong>
+
+                <span>
+                  ${formattedDate}
+                </span>
+
+              </div>
+
+              ${
+                today
+                  ? `
+                    <span class="my-schedule-today">
+                      DZIŚ
+                    </span>
+                  `
+                  : ''
+              }
 
             </div>
 
@@ -2975,7 +3056,14 @@ function renderMySchedule() {
 
       html += `
 
-        <div class="my-schedule-event">
+        <div
+          class="
+            my-schedule-event
+            ${event.type === 'devotion'
+              ? 'devotion-event'
+              : ''}
+          "
+        >
 
           <div class="my-schedule-time">
 
@@ -3002,9 +3090,25 @@ function renderMySchedule() {
                     Po Mszy Św.
                   </span>
                 `
-                : ''
+                : `
+                  <span>
+                    ${
+                      event.type === 'mass'
+                        ? 'Msza Święta'
+                        : 'Nabożeństwo'
+                    }
+                  </span>
+                `
             }
 
+          </div>
+
+          <div class="my-schedule-event-mark">
+            ${
+              event.type === 'mass'
+                ? '✝'
+                : '•'
+            }
           </div>
 
         </div>
@@ -3054,7 +3158,6 @@ function renderMySchedule() {
     .querySelector('#navMine')
     ?.classList.add('active')
 }
-
 // -------------------------
 // SZCZEGÓŁY DNIA W MIESIĄCU
 // -------------------------
